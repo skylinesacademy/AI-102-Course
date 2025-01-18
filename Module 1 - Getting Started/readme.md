@@ -1,3 +1,6 @@
+This is a modified version of a Microsoft Learn module that has been streamlined for the AI-102 training course at `https://www.refactored.pro`
+
+
 # Get Started with Azure AI Services
 
 In this exercise, you'll get started with Azure AI Services by creating an **Azure AI Services** resource in your Azure subscription and using it from a client application. The goal of the exercise is not to gain expertise in any particular service, but rather to become familiar with a general pattern for provisioning and working with Azure AI services as a developer.
@@ -10,10 +13,7 @@ You'll develop your code using Visual Studio Code. The code files for your app h
 2. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `///` repository to a local folder (it doesn't matter which folder).
 3. Open the folder in VS Code
 4. Ensure you have all the dependencies
-
 5. Expand the `Module 1 - Getting Started>` folder.
-
-Python code has been provided for rest-client access to Azure AI resources.
 
 ## Provision an Azure AI Services resource
 
@@ -26,9 +26,11 @@ Azure AI Services are cloud-based services that encapsulate artificial intellige
     - **Region**: *Choose any available region*
     - **Name**: *Enter a unique name*
     - **Pricing tier**: Standard S0
+
+
 3. Select the required checkboxes and create the resource.
 4. Wait for deployment to complete, and then view the deployment details.
-5. Go to the resource and view its **Keys and Endpoint** page. This page contains the information that you will need to connect to your resource and use it from applications you develop. Specifically:
+5. Go to the resource and view its **Keys and Endpoint** page and look for **content understanding**. This page contains the information that you will need to connect to your resource and use it from applications you develop. Specifically:
     - An HTTP *endpoint* to which client applications can send requests.
     - Two *keys* that can be used for authentication (client applications can use either key to authenticate).
     - The *location* where the resource is hosted. This is required for requests to some (but not all) APIs.
@@ -44,10 +46,9 @@ The Azure AI services APIs are REST-based, so you can consume them by submitting
 
     Open the configuration file and update the configuration values it contains to reflect the **endpoint** and an authentication **key** for your Azure AI services resource. Save your changes.
 
-3. Note that the **rest-client** folder contains a code file for the client application:
+3. Note that the **pyhton-rest-call** folder contains a code file for the client application:
 
-    - **C#**: Program.cs
-    - **Python**: rest-client.py
+       - **Python**: rest-client.py
 
     Open the code file and review the code it contains, noting the following details:
     - Various namespaces are imported to enable HTTP communication
@@ -57,83 +58,15 @@ The Azure AI services APIs are REST-based, so you can consume them by submitting
     - The key for your service is included in the request header to authenticate your client application.
     - The response from the service is a JSON object, which the client application can parse.
 
-4. Right click on the **rest-client** folder, select *Open in Integrated Terminal* and run the following command:
+4. Make sure you have python installed. If not install it or type python from the terminal and Windows should prompt you. Then follow the commands below to install python-dotenv
 
 
     **Python**
 
-    ```
     pip install python-dotenv
     python rest-client.py
     ```
 
-5. When prompted, enter some text and review the language that is detected by the service, which is returned in the JSON response. For example, try entering "Hello", "Bonjour", and "Gracias".
+5. When prompted, enter some text and review the language that is detected by the service, which is returned in the JSON response. For example, try entering "Hello", "Bonjour", and "Gracias" to see if it detects the various languages.
 6. When you have finished testing the application, enter "quit" to stop the program.
 
-## Use an SDK
-
-You can write code that consumes Azure AI services REST APIs directly, but there are software development kits (SDKs) for many popular programming languages, including Microsoft C#, Python, Java, and Node.js. Using an SDK can greatly simplify development of applications that consume Azure AI services.
-
-1. In Visual Studio Code, expand the **sdk-client** folder under the **C-Sharp** or **Python** folder, depending on your language preference. Then run `cd ../sdk-client` to change into the relevant **sdk-client** folder.
-
-2. Install the Text Analytics SDK package by running the appropriate command for your language preference:
-
-    **C#**
-
-    ```
-    dotnet add package Azure.AI.TextAnalytics --version 5.3.0
-    ```
-
-    **Python**
-
-    ```
-    pip install azure-ai-textanalytics==5.3.0
-    ```
-
-3. View the contents of the **sdk-client** folder, and note that it contains a file for configuration settings:
-
-    - **C#**: appsettings.json
-    - **Python**: .env
-
-    Open the configuration file and update the configuration values it contains to reflect the **endpoint** and an authentication **key** for your Azure AI services resource. Save your changes.
-    
-4. Note that the **sdk-client** folder contains a code file for the client application:
-
-    - **C#**: Program.cs
-    - **Python**: sdk-client.py
-
-    Open the code file and review the code it contains, noting the following details:
-    - The namespace for the SDK you installed is imported
-    - Code in the **Main** function retrieves the endpoint and key for your Azure AI services resource - these will be used with the SDK to create a client for the Text Analytics service.
-    - The **GetLanguage** function uses the SDK to create a client for the service, and then uses the client to detect the language of the text that was entered.
-
-5. Return to the terminal, ensure you are in the **sdk-client** folder, and enter the following command to run the program:
-
-    **C#**
-
-    ```
-    dotnet run
-    ```
-
-    **Python**
-
-    ```
-    python sdk-client.py
-    ```
-
-6. When prompted, enter some text and review the language that is detected by the service. For example, try entering "Goodbye", "Au revoir", and "Hasta la vista".
-7. When you have finished testing the application, enter "quit" to stop the program.
-
-> **Note**: Some languages that require Unicode character sets may not be recognized in this simple console application.
-
-## Clean up resources
-
-If you're not using the Azure resources created in this lab for other training modules, you can delete them to avoid incurring further charges.
-
-1. Open the Azure portal at `https://portal.azure.com`, and in the top search bar, search for the resources you created in this lab.
-
-2. On the resource page, select **Delete** and follow the instructions to delete the resource. Alternatively, you can delete the entire resource group to clean up all resources at the same time.
-
-## More information
-
-For more information about Azure AI Services, see the [Azure AI Services documentation](https://docs.microsoft.com/azure/ai-services/what-are-ai-services).
