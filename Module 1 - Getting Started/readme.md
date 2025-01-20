@@ -30,7 +30,7 @@ Azure AI Services are cloud-based services that encapsulate artificial intellige
 
 3. Select the required checkboxes and create the resource.
 4. Wait for deployment to complete, and then view the deployment details.
-5. Go to the resource and view its **Keys and Endpoint** page and look for **content understanding**. This page contains the information that you will need to connect to your resource and use it from applications you develop. Specifically:
+5. Go to the resource and view its **Keys and Endpoint** page and look for **Content Understanding**. This page contains the information that you will need to connect to your resource and use it from applications you develop. Specifically:
     - An HTTP *endpoint* to which client applications can send requests.
     - Two *keys* that can be used for authentication (client applications can use either key to authenticate).
     - The *location* where the resource is hosted. This is required for requests to some (but not all) APIs.
